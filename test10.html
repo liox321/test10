@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+	        <meta charset="UTF-8">
+			<TITLE>
+			smovies
+			</title>
+			<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<form action="mail.php" method="post">
+    <label for="name">Your Name</label>
+    <input type="text"  name="name" placeholder="Your name..">
+ <input type="email"  name="emailaddress" placeholder="Your email address">   
+    <input type="text"  name="mobile" placeholder="Your message">
+    <label for="message">Message</label>
+    <textarea  name="message" placeholder="Write something.." style="height:200px"></textarea>
+    <input type="submit" value="Submit">
+  </form> 
+
+?>
+<?php
+//get data from form  
+
+$name = $_POST['name'];
+$email= $_POST['email'];
+$message= $_POST['message'];
+$number= $_POST['mobile'];
+$to = "sari2008.ibrahim@gmail.com";
+$subject = "Mail From codeconia";
+$txt ="Name = ". $name . "\r\n  Email = " . $email . "\r\n Message =" . $message."\r\n mobile =".$number ;
+$headers = "From: noreply@codeconia.com" . "\r\n" .
+"CC: somebodyelse@example.com";
+if($email!=NULL){
+    mail($to,$subject,$txt,$headers);
+}
+//redirect
+header("Location:thankyou.html");
+?>
